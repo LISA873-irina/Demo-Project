@@ -6,9 +6,11 @@
 typedef struct {
     Course *course;
     double marks;
+    int completed;
 } CourseResult;
 
-CourseResult createCourseResult(Course *course, double marks);
+CourseResult createCompletedCourseResult(Course *course, double marks);
+CourseResult createIncompleteCourseResult(Course *course);
 void viewCourseResult(CourseResult result);
 
 #endif
