@@ -29,7 +29,6 @@ total++;
 if (testCourseName()) passed++;
 total++;
  if (testCourseCredit()) passed++;
- if (testCourseCredit()) passed++;
 
  printf("Passed %d/%d tests\n", passed, total);
  if (passed == total) return 0;
