@@ -1,2 +1,5 @@
-gcc -I modules tests/test_course.c modules/course.c -o test_course.exe
-.\test_course.exe
+gcc -Imodules modules/course.c modules/courseResult.c tests/test_course.c -o tests/test_course.exe
+.\tests\test_course.exe
+
+gcc -Imodules modules/course.c modules/courseResult.c tests/test_course_result.c -o tests/test_course_result.exe
+.\tests\test_course_result.exe
