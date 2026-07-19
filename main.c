@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "course.h"
 #include "courseResult.h"
+#include "gpa.h"
 
 int main()
 {
@@ -20,10 +21,16 @@ int main()
         results[i] = createCourseResult(&courses[i], marks);
     }
 
+    printf("\nResults\n");
     for (int i = 0; i < n_courses; i++)
     {
-        viewCourseResult(results[i]);
+        printf("%s: %s (credit: %.1f)\n", courses[i].code, courses[i].name, courses[i].credit);
+        printf("Marks: %.2f\n", results[i].marks);
+        printf("Grade: %s\n", getLetterGrade(results[i]));
     }
+
+    double cgpa = calculateGPA(results, n_courses);
+    printf("CGPA: %.2f\n", cgpa);
 
     return 0;
 }
