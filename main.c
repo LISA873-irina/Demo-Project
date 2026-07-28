@@ -13,7 +13,8 @@ void showMenu()
     printf("6. Edit Course Result\n");
     printf("7. Delete Course Result\n");
     printf("8. View Marksheet\n");
-    printf("9. Exit\n");
+    printf("9. Calculate Required GPA\n");
+    printf("10. Exit\n");
     printf("Enter Choice: ");
 }
 
@@ -204,6 +205,28 @@ void viewMarksheet(CourseResult results[], int n_results)
     printf("CGPA: %.2f\n", calculateGPA(results, n_results));
 }
 
+void calculateRequiredGPAScreen(CourseResult results[], int n_results)
+{
+    double completed_credits = 0.0;
+    double target_cgpa, remaining_credits;
+
+    for (int i = 0; i < n_results; i++)
+    {
+        if (results[i].completed) completed_credits += results[i].course->credit;
+    }
+
+    double current_cgpa = calculateGPA(results, n_results);
+
+    printf("Current CGPA: %.2f\n", current_cgpa);
+    printf("Completed Credits: %.1f\n", completed_credits);
+    printf("Target CGPA: ");
+    scanf("%lf", &target_cgpa);
+    printf("Remaining Credits: ");
+    scanf("%lf", &remaining_credits);
+
+    printf("Required GPA: %.2f\n", calculateRequiredGPA(current_cgpa, completed_credits, target_cgpa, remaining_credits));
+}
+
 int main()
 {
     Course courses[1000];
@@ -212,7 +235,7 @@ int main()
     int n_results = 0;
     int choice = 0;
 
-    while (choice != 9)
+    while (choice != 10)
     {
         showMenu();
         scanf("%d", &choice);
@@ -225,6 +248,7 @@ int main()
         else if (choice == 6) editCourseResult(results, n_results);
         else if (choice == 7) deleteCourseResult(results, &n_results);
         else if (choice == 8) viewMarksheet(results, n_results);
+        else if (choice == 9) calculateRequiredGPAScreen(results, n_results);
     }
 
     return 0;
