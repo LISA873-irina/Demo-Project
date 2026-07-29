@@ -6,3 +6,5 @@ gcc -Imodules modules/course.c modules/courseResult.c tests/test_course_result.c
 
 gcc -Imodules modules/course.c modules/courseResult.c modules/gpa.c tests/test_gpa.c -o tests/test_gpa.exe
 .\tests\test_gpa.exe
+gcc -Imodules modules/course.c modules/courseResult.c modules/gpa.c modules/student.c tests/test_student.c -o tests/test_student.exe
+.\tests\test_student.exe
